@@ -69,6 +69,10 @@ That's it! You can now use styled-system props with your Box component:
 To support more of styled-sytem's style props, add them to the second argument of the HOC:
 
 ```js
+import { space, typography, color } from 'styled-system'
+
+// ...
+
 export default withStyledSystem(Box, [space, typography, color])
 
 // <Box /> now supports props like `color`, `bg`, `fontSize`, etc...
