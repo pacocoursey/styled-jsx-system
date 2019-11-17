@@ -56,13 +56,10 @@ If you want your Box to support styled-system props like [space](https://styled-
 That's it! You can now use styled-system props with your Box component:
 
 ```js
-<Box m={[20, 10, 5]}>
-  Hello
-</Box>
+<Box m={[20, 10, 5]}>Hello</Box>
 ```
 
 <br />
-
 
 #### More style props
 
@@ -76,4 +73,26 @@ import { space, typography, color } from 'styled-system'
 export default withStyledSystem(Box, [space, typography, color])
 
 // <Box /> now supports props like `color`, `bg`, `fontSize`, etc...
+```
+
+<br />
+
+### Themeing
+
+styled-jsx-system supports themeing as you would normally in [styled-system](https://styled-system.com/theme-specification):
+
+```js
+import { ThemeProvider } from 'styled-jsx-system'
+
+const myTheme = {
+  colors: {
+    gray: ['#fafafa', '#efefef', '#666']
+  }
+}
+
+export default () => (
+  <ThemeProvider theme={myTheme}>
+    <Box color="gray.2">Box component using a custom theme</Box>
+  </ThemeProvider>
+)
 ```
