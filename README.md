@@ -31,7 +31,7 @@ export default Box
 If you want your Box to support styled-system props like [space](https://styled-system.com/table#space), export your Box component with the styled-jsx-system HOC and ensure you accept a `className` prop:
 
 ```diff
-import { space } from 'styled-system'
++ import { space } from 'styled-system'
 
 - const Box = ({ children }) => {
 + const Box = ({ className, children }) => {
