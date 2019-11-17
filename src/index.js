@@ -3,6 +3,16 @@ import objss from 'objss'
 import css from 'styled-jsx/css'
 import cn from 'classnames'
 
+import { createContext, useContext } from 'react'
+
+// Theme support
+const Theme = createContext({})
+export const useTheme = () => useContext(Theme)
+export const ThemeProvider = ({ children, value, theme }) => {
+  // Support both <ThemeProvider value={...}> and <ThemeProvider theme={...}> (latter being styled-components standard)
+  return <Theme.Provider value={value || theme}>{children}</Theme.Provider>
+}
+
 const createMobileQuery = rules => css.resolve`
   @media (min-width: 40em) {
     ${objss(rules)}
@@ -15,12 +25,12 @@ const createTabletQuery = rules => css.resolve`
   }
 `
 
-const styler = (props, opts) => {
+const styler = (props, opts, theme) => {
   const styleObjects = []
   const mediaQueries = []
 
   opts.forEach(opt => {
-    const x = opt(props)
+    const x = opt({ ...props, theme })
 
     Object.entries(x).forEach(([key, value]) => {
       if (key.startsWith('@media')) {
@@ -49,7 +59,8 @@ const styler = (props, opts) => {
 
 const HOC = (Component, opts) => {
   const Comp = ({ className, children, ...props }) => {
-    const styles = styler(props, opts)
+    const theme = useTheme()
+    const styles = styler(props, opts, theme)
 
     return (
       <Component
