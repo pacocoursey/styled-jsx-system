@@ -1,17 +1,33 @@
 {
   "name": "styled-jsx-system",
-  "version": "1.0.0",
+  "version": "0.0.2",
+  "repository": "pacocoursey/styled-jsx-system",
   "license": "MIT",
+  "files": [
+    "dist/**"
+  ],
   "scripts": {
     "lint": "prettier --write '**/*.js'",
-    "build": "next build"
+    "build": "babel src -d dist --copy-files",
+    "prepublish": "yarn build"
   },
   "dependencies": {
     "classnames": "^2.2.6",
-    "next": "^9.1.3",
-    "objss": "^1.0.3",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "objss": "^1.0.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.7.0",
+    "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/preset-react": "^7.7.0",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.6.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-react": "^7.16.0",
+    "prettier": "^1.19.1"
+  },
+  "peerDependencies": {
+    "react": "16.11.0",
     "styled-system": "^5.1.2"
   },
   "prettier": {
@@ -70,12 +86,5 @@
   "eslintIgnore": [
     "**/node_modules/**/**",
     "**/.next/**/**"
-  ],
-  "devDependencies": {
-    "babel-eslint": "^10.0.3",
-    "eslint": "^6.6.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-react": "^7.16.0",
-    "prettier": "^1.19.1"
-  }
+  ]
 }
