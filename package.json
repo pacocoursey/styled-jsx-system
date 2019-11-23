@@ -1,9 +1,9 @@
 {
   "name": "styled-jsx-system",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "repository": "pacocoursey/styled-jsx-system",
   "license": "MIT",
-  "main": "./src/index.js",
+  "main": "./dist/index.js",
   "files": [
     "dist/**"
   ],
