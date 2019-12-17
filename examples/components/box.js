@@ -1,4 +1,4 @@
-import styledJsxSystem from '../src'
+import styledJsxSystem from 'styled-jsx-system'
 import { color, typography, space } from 'styled-system'
 
 const Box = ({ children, className }) => {

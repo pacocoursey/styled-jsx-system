@@ -3,7 +3,7 @@ import { ThemeProvider } from '../src'
 
 const myTheme = {
   colors: {
-    gray: ['#fafafa', '#efefef', '#666'],
+    gray: ['#fafafa', '#efefef', '#666']
   }
 }
 
