@@ -1,6 +1,6 @@
 {
   "name": "styled-jsx-system",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "repository": "pacocoursey/styled-jsx-system",
   "license": "MIT",
   "main": "./dist/index.js",
@@ -9,9 +9,7 @@
   ],
   "scripts": {
     "lint": "prettier --write '**/*.js'",
-    "watch": "ncc build src/index.tsx -o dist -m -e react -e styled-jsx -w",
-    "build": "ncc build src/index.tsx -o dist -m -e react -e styled-jsx",
-    "babel": "babel src -d dist"
+    "build": "babel src -d dist --extensions .tsx"
   },
   "dependencies": {
     "classnames": "^2.2.6",
@@ -28,8 +26,8 @@
     "@types/classnames": "^2.2.9",
     "@types/react": "^16.9.11",
     "@types/styled-jsx": "^2.2.8",
-    "@zeit/ncc": "^0.20.5",
     "babel-eslint": "^10.0.3",
+    "babel-preset-minify": "^0.5.1",
     "eslint": "^6.6.0",
     "prettier": "^1.19.1",
     "react": "^16.12.0",
