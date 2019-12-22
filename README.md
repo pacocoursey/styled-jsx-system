@@ -32,6 +32,7 @@ If you want your Box to support styled-system props like [space](https://styled-
 
 ```diff
 + import { space } from 'styled-system'
++ import withStyledSystem from 'styled-jsx-system'
 
 - const Box = ({ children }) => {
 + const Box = ({ className, children }) => {
@@ -63,23 +64,50 @@ That's it! You can now use styled-system props with your Box component:
 
 #### More style props
 
-To support more of styled-sytem's style props, add them to the second argument of the HOC:
+To support more of Styled System's style props, add them to the second argument of the HOC:
 
 ```js
 import { space, typography, color } from 'styled-system'
 
-// ...
-
 export default withStyledSystem(Box, [space, typography, color])
-
 // <Box /> now supports props like `color`, `bg`, `fontSize`, etc...
 ```
 
 <br />
 
+#### Compose
+
+Using Styled System's [compose](https://styled-system.com/api#compose) works too:
+
+```js
+import { compose, space, typography, color } from 'styled-system'
+
+export default withStyledSystem(Box, [compose(space, typography, color)])
+```
+
+<br />
+
+#### System
+
+Custom props using the [system](https://styled-system.com/api#system) utility are supported:
+
+```js
+import { system } from 'styled-system'
+
+const customProp = system({
+  lineClamp: {
+    property: 'WebkitLineClamp',
+    transform: (lines) => String(lines)
+  }
+})
+
+export default withStyledSystem(Box, [customProp])
+```
+<br />
+
 ### Themeing
 
-styled-jsx-system supports themeing as you would normally in [styled-system](https://styled-system.com/theme-specification):
+styled-jsx-system supports [themeing](https://styled-system.com/theme-specification#theme-specification), just import the ThemeProvider from `styled-jsx-system`:
 
 ```js
 import { ThemeProvider } from 'styled-jsx-system'
