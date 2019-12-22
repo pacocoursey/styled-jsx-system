@@ -1,6 +1,6 @@
 {
   "name": "styled-jsx-system",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "repository": "pacocoursey/styled-jsx-system",
   "license": "MIT",
   "main": "./dist/index.js",
@@ -10,7 +10,8 @@
   "scripts": {
     "lint": "prettier --write '**/*.js'",
     "watch": "ncc build src/index.tsx -o dist -m -e react -e styled-jsx -w",
-    "build": "ncc build src/index.tsx -o dist -m -e react -e styled-jsx"
+    "build": "ncc build src/index.tsx -o dist -m -e react -e styled-jsx",
+    "babel": "babel src -d dist"
   },
   "dependencies": {
     "classnames": "^2.2.6",
@@ -18,6 +19,12 @@
     "styled-jsx": "^3.2.4"
   },
   "devDependencies": {
+    "@babel/cli": "^7.7.7",
+    "@babel/core": "^7.7.7",
+    "@babel/plugin-transform-modules-commonjs": "^7.7.5",
+    "@babel/plugin-transform-template-literals": "^7.7.4",
+    "@babel/preset-react": "^7.7.4",
+    "@babel/preset-typescript": "^7.7.7",
     "@types/classnames": "^2.2.9",
     "@types/react": "^16.9.11",
     "@types/styled-jsx": "^2.2.8",
