@@ -1,8 +1,6 @@
 import React, { useContext } from 'react'
 import css from 'styled-jsx/css'
 import cn from 'classnames'
-
-// @ts-ignore
 import objss from 'objss'
 
 import { createContext } from 'react'
@@ -12,18 +10,21 @@ interface styledJSXResolve {
   styles: string
 }
 
-// Theme support
-const Theme = createContext({})
-const useTheme = () => useContext(Theme)
-export const ThemeProvider = ({
-  children,
-  value,
-  theme
-}: {
+interface ThemeProps {
   children: any
   value: any
   theme: any
-}) => {
+}
+
+interface HOCProps {
+  className: string
+  children: any
+}
+
+// Theme support
+const Theme = createContext({})
+const useTheme = () => useContext(Theme)
+export const ThemeProvider = ({ children, value, theme }: ThemeProps) => {
   if (!value && !theme) {
     throw new Error('Must provide either value or theme.')
   }
@@ -78,14 +79,7 @@ const styler = (props: any, opts: any, theme: any): Array<styledJSXResolve> => {
 }
 
 const HOC = (Component: any, opts: any) => {
-  const Comp = ({
-    className,
-    children,
-    ...props
-  }: {
-    className: string
-    children: any
-  }) => {
+  const Comp = ({ className, children, ...props }: HOCProps) => {
     const theme = useTheme()
     const styles = styler(props, opts, theme)
 

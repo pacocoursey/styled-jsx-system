@@ -4,7 +4,7 @@
     "esModuleInterop": true,
     "jsx": "react",
     "lib": [
-      "es2018", "dom"
+      "esnext", "dom"
     ],
     "module": "commonjs",
     "moduleResolution": "node",
@@ -17,6 +17,7 @@
     "outDir": "./dist",
     "target": "esnext",
     "typeRoots": [
+      "./types",
       "./node_modules/@types"
     ]
   },
