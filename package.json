@@ -8,8 +8,8 @@
     "dist/**"
   ],
   "scripts": {
-    "lint": "prettier --write '**/*.js'",
-    "build": "babel src -d dist --extensions .tsx"
+    "lint": "prettier --write '**/*.jsx'",
+    "build": "babel src -d dist"
   },
   "dependencies": {
     "classnames": "^2.2.6",
@@ -22,18 +22,13 @@
     "@babel/plugin-transform-modules-commonjs": "^7.7.5",
     "@babel/plugin-transform-template-literals": "^7.7.4",
     "@babel/preset-react": "^7.7.4",
-    "@babel/preset-typescript": "^7.7.7",
-    "@types/classnames": "^2.2.9",
-    "@types/react": "^16.9.11",
-    "@types/styled-jsx": "^2.2.8",
     "babel-eslint": "^10.0.3",
     "babel-preset-minify": "^0.5.1",
     "eslint": "^6.6.0",
-    "prettier": "^1.19.1",
-    "react": "^16.12.0",
-    "typescript": "^3.7.2"
+    "prettier": "^1.19.1"
   },
   "peerDependencies": {
+    "react": "^16.12.0",
     "styled-jsx": "^3.2.4",
     "styled-system": "^5.1.2"
   },

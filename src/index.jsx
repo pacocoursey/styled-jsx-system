@@ -5,26 +5,10 @@ import objss from 'objss'
 
 import { createContext } from 'react'
 
-interface styledJSXResolve {
-  className: string
-  styles: string
-}
-
-interface ThemeProps {
-  children: any
-  value: any
-  theme: any
-}
-
-interface HOCProps {
-  className: string
-  children: any
-}
-
 // Theme support
 const Theme = createContext({})
 const useTheme = () => useContext(Theme)
-export const ThemeProvider = ({ children, value, theme }: ThemeProps) => {
+export const ThemeProvider = ({ children, value, theme }) => {
   if (!value && !theme) {
     throw new Error('Must provide either value or theme.')
   }
@@ -34,33 +18,31 @@ export const ThemeProvider = ({ children, value, theme }: ThemeProps) => {
   return <Theme.Provider value={value || theme}>{children}</Theme.Provider>
 }
 
-const createMediaQuery = (breakpoint: string, rules: any) =>
+const createMediaQuery = (breakpoint, rules) =>
   css.resolve`
     @media (min-width: ${breakpoint}) {
       ${objss(rules)}
     }
   `
 
-const styler = (props: any, opts: any, theme: any): Array<styledJSXResolve> => {
-  const styleObjects: Array<Object> = []
-  const mediaQueries: Array<styledJSXResolve> = []
+const styler = (props, opts, theme) => {
+  const styleObjects = []
+  const mediaQueries = []
 
-  opts.forEach((opt: any) => {
+  opts.forEach(opt => {
     // Disable breakpoint cache because it causes hydration error on SSR
-    // TODO: fix this somehow
-    const x = opt({
+    const rules = opt({
       ...props,
       theme: { ...theme, disableStyledSystemCache: true }
     })
 
-    Object.entries(x).forEach(([key, value]) => {
+    Object.entries(rules).forEach(([key, value]) => {
       if (key.startsWith('@media')) {
         const breakpoint = key
           .split('@media screen and (min-width: ')
           .pop()
           .replace(')', '')
-        const y = createMediaQuery(breakpoint, value)
-        mediaQueries.push(y)
+        mediaQueries.push(createMediaQuery(breakpoint, value))
       } else {
         // Not a media query, just regular styling
         styleObjects.push({ [key]: value })
@@ -78,8 +60,8 @@ const styler = (props: any, opts: any, theme: any): Array<styledJSXResolve> => {
   ]
 }
 
-const HOC = (Component: any, opts: any) => {
-  const Comp = ({ className, children, ...props }: HOCProps) => {
+const HOC = (Component, opts) => {
+  const Comp = ({ className, children, ...props }) => {
     const theme = useTheme()
     const styles = styler(props, opts, theme)
 
