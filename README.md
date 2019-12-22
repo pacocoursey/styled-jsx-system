@@ -1,7 +1,5 @@
 # styled-jsx-system
 
-> This is a **proof of concept**. Don't use it, I'm just experimenting!
-
 styled-jsx-system is a way to use [styled-system](https://github.com/styled-system/styled-system) with [styled-jsx](https://github.com/zeit/styled-jsx).
 
 <br />
@@ -64,7 +62,7 @@ That's it! You can now use styled-system props with your Box component:
 
 #### More style props
 
-To support more of Styled System's style props, add them to the second argument of the HOC:
+To support more of styled-system's style props, add them to the second argument of the HOC:
 
 ```js
 import { space, typography, color } from 'styled-system'
@@ -77,7 +75,7 @@ export default withStyledSystem(Box, [space, typography, color])
 
 #### Compose
 
-Using Styled System's [compose](https://styled-system.com/api#compose) works too:
+Using styled-system's [compose](https://styled-system.com/api#compose) works too:
 
 ```js
 import { compose, space, typography, color } from 'styled-system'
@@ -102,6 +100,7 @@ const customProp = system({
 })
 
 export default withStyledSystem(Box, [customProp])
+// <Box /> now supports the lineClamp prop (i.e. <Box lineClamp={3} />)
 ```
 <br />
 
@@ -124,3 +123,11 @@ export default () => (
   </ThemeProvider>
 )
 ```
+
+<br />
+
+### Thanks
+
+- [Giuseppe](https://twitter.com/giuseppegurgone)
+- [JJ](https://twitter.com/_ijjk)
+- [Shu](https://twitter.com/shuding_)
