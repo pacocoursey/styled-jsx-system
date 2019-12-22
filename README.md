@@ -4,6 +4,16 @@ styled-jsx-system is a way to use [styled-system](https://github.com/styled-syst
 
 <br />
 
+## Installation
+
+```
+$ yarn add styled-jsx-system
+```
+
+You must also have styled-jsx and styled-system installed.
+
+<br />
+
 ### Usage
 
 You have a Box component that you style with styled-jsx:
