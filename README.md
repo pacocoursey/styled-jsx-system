@@ -43,7 +43,7 @@ If you want your Box to support styled-system props like [space](https://styled-
 + import withStyledSystem from 'styled-jsx-system'
 
 - const Box = ({ children }) => {
-+ const Box = ({ className, children }) => {
++ const Box = ({ className, styles, children }) => {
   return (
 -   <div>
 +   <div className={className}>
@@ -54,6 +54,7 @@ If you want your Box to support styled-system props like [space](https://styled-
           padding: 8px;
         }
       `}</style>
++     {styles}
     </div>
   )
 }
@@ -105,13 +106,14 @@ import { system } from 'styled-system'
 const customProp = system({
   lineClamp: {
     property: 'WebkitLineClamp',
-    transform: (lines) => String(lines)
+    transform: lines => String(lines)
   }
 })
 
 export default withStyledSystem(Box, [customProp])
 // <Box /> now supports the lineClamp prop (i.e. <Box lineClamp={3} />)
 ```
+
 <br />
 
 ### Themeing

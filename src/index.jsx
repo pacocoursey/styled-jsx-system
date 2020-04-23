@@ -69,15 +69,9 @@ const HOC = (Component, opts) => {
       <Component
         {...props}
         className={cn(className, [...styles.map(s => s.className)])}
+        styles={styles.map(s => s.styles)}
       >
         {children}
-        {styles.map((s, i) => {
-          return (
-            <React.Fragment key={`styled-system-${i}`}>
-              {s.styles}
-            </React.Fragment>
-          )
-        })}
       </Component>
     )
   }

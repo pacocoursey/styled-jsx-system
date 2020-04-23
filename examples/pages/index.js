@@ -7,8 +7,11 @@ const scope = { Box, ThemeProvider, styledSystem, withStyledSystem }
 
 const code = `
 () => {
-  const BoxComponent = ({ className, children }) => (
-    <div className={className}>{children}</div>
+  const BoxComponent = ({ className, styles, children }) => (
+    <div className={className}>
+      {children}
+      {styles}
+    </div>
   )
 
   const Box = withStyledSystem(
@@ -87,9 +90,9 @@ const Index = () => {
         <LiveError />
       </LiveProvider>
 
-      {/* <Box color="#fff" bg={['#FF0080', '#7928CA', '#0070F3']}>
+      <Box color="blue" bg={['#FF0080', '#7928CA', '#0070F3']}>
         Box component here
-      </Box> */}
+      </Box>
 
       <style jsx>{`
         main {
@@ -106,7 +109,8 @@ const Index = () => {
           width: 100%;
         }
 
-        .editor :global(textarea), .editor :global(pre) {
+        .editor :global(textarea),
+        .editor :global(pre) {
           line-height: 1.7 !important;
         }
 

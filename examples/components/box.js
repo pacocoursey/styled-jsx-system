@@ -1,8 +1,13 @@
 import styledJsxSystem from 'styled-jsx-system'
 import { color, typography, space } from 'styled-system'
 
-const Box = ({ children, className }) => {
-  return <div className={className}>{children}</div>
+const Box = ({ children, className, styles }) => {
+  return (
+    <div className={className}>
+      {children}
+      {styles}
+    </div>
+  )
 }
 
 export default styledJsxSystem(
